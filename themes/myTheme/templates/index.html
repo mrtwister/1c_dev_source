@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content">
+
+{% for article in articles_page.object_list %}
+    <section class="latest section">
+        <div class="section-inner">                        
+            <div class="content">    
+                                
+                <div class="item featured text-left">
+                        <h3 class="title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+                        <p>Опубликовано {{ article.locale_date }} в <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></p>
+                        {% if article.tags %}<p>Теги: {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a>, {% endfor %}</p>{% endif %}
+                        <div class="desc text-left">                                    
+                                <p>{{ article.summary }}</p>
+                         </div><!--//desc-->         
+
+                <div class="entry-content">  </div><!-- /.entry-content -->
+                <a class="btn btn-cta-secondary" href="{{ SITEURL }}/{{ article.url }}/">Читать далее --></a>
+                </div> <!--item-->
+            </div> <!--content-->    
+        </div> <!--div cectiov-->
+    </section>
+{% endfor %}
+{% endblock content %}
+
